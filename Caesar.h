@@ -4,6 +4,7 @@ class Caesar : public BaseCipher
 private:
     const int CHAR_SIZE = 26;
     int mKey = 3;
+
 public:
     Caesar(std::string key);
     ~Caesar();

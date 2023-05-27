@@ -2,6 +2,32 @@
 Caesar::Caesar(std::string key)
 {
     mKey = std::stoi(key);
+
+    int i = 0, k = 0;
+    std::string AlphabetC;
+
+    k = mKey % CHAR_SIZE;
+    for (i = 0; i < CHAR_SIZE; i++)
+    {
+        AlphabetC.push_back('a' + i);
+    }
+    for (i = 0; i < CHAR_SIZE; i++)
+    {
+        AlphabetC.push_back('A' + i);
+    }
+    for (i = 0; i < CHAR_SIZE; i++)
+    {
+        AlphabetC[i] = AlphabetC[i] + k;
+        if (AlphabetC[i] > 'z')
+            AlphabetC[i] = AlphabetC[i] - 26;
+    }
+    for (i = CHAR_SIZE; i < 2 * CHAR_SIZE; i++)
+    {
+        AlphabetC[i] = AlphabetC[i] + k;
+        if (AlphabetC[i] > 'Z')
+            AlphabetC[i] = AlphabetC[i] - 26;
+    }
+    ShowAlphabet(AlphabetC);
 }
 
 Caesar::~Caesar()
