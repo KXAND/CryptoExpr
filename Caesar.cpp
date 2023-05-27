@@ -34,11 +34,11 @@ Caesar::~Caesar()
 {
 }
 
-void Caesar::encrypt(std::string &m, int mLen, std::string &c)
+void Caesar::encrypt(std::string &m, std::string &c)
 {
 
     c.clear();
-    for (int i = 0; i < mLen; i++)
+    for (int i = 0; i < m.length(); i++)
     {
         c.push_back(m[i]);
         if (c[i] >= 'a' && c[i] <= 'z')
@@ -57,10 +57,10 @@ void Caesar::encrypt(std::string &m, int mLen, std::string &c)
     }
 }
 
-void Caesar::decrypt(std::string &c, int cLen, std::string &m)
+void Caesar::decrypt(std::string &c, std::string &m)
 {
     m.clear();
-    for (int i = 0; i < cLen; i++)
+    for (int i = 0; i < c.length(); i++)
     {
         m.push_back(c[i]);
         if (m[i] >= 'a' && m[i] <= 'z')

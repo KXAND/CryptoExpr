@@ -31,5 +31,5 @@ void BaseCipher::ShowAlphabet(std::string t)
     }
     printf("\n");
 }
-void BaseCipher::encrypt(std::string &m, int mLen, std::string &c) {}
-void BaseCipher::decrypt(std::string &c, int cLen, std::string &m) {}
+void BaseCipher::encrypt(std::string &m, std::string &c) {}
+void BaseCipher::decrypt(std::string &c, std::string &m) {}

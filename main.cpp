@@ -13,8 +13,8 @@ using namespace std;
 #define MSG_FILE "MessageFiles/CaesarMSG.txt"
 /*
 1.	密码学及应用：熟悉云安全实验平台及环境，完成：
-- Caesar密码，
-- 单表置换密码，
+- Caesar密码：d
+- 单表置换密码：d
 - 仿射密码
 2.	密码学及应用：
 - DES，
@@ -88,10 +88,10 @@ int EncodeFile(CipherType cipherType, string key)
 			lineMsg = lineMsg.substr(3);
 		}
 
-		cipher->encrypt(lineMsg, lineMsg.length(), lineCipher);
+		cipher->encrypt(lineMsg, lineCipher);
 		outFile << lineCipher;
 		outFile << "\n";
-		cipher->decrypt(lineCipher, lineCipher.length(), lineDecodeMsg);
+		cipher->decrypt(lineCipher, lineDecodeMsg);
 
 		if (lineDecodeMsg != lineMsg)
 		{
@@ -108,8 +108,8 @@ int EncodeFile(CipherType cipherType, string key)
 int main(int argc, char **argv)
 {
 	string k = "b";
-	// cin>>k;
-
-	EncodeFile(typeMonoalphabetic, k);
+	cin >> k;
+	cout << k;
+	// EncodeFile(typeMonoalphabetic, k);
 	return 0;
 }

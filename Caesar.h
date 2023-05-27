@@ -8,6 +8,6 @@ private:
 public:
     Caesar(std::string key);
     ~Caesar();
-    void encrypt(std::string &m, int mLen, std::string &c);
-    void decrypt(std::string &c, int cLen, std::string &m);
+    void encrypt(std::string &m, std::string &c);
+    void decrypt(std::string &c, std::string &m);
 };
