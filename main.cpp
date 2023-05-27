@@ -4,7 +4,7 @@
 #include <iostream>
 #include <fstream>
 #include "caesar.h"
-// #include "monoAlphabetic.h"
+#include "monoAlphabetic.h"
 
 using namespace std;
 
@@ -73,7 +73,9 @@ int EncodeFile(CipherType cipherType, string key)
 	case typeCaesar:
 		cipher = new Caesar(key);
 		break;
-
+	case typeMonoalphabetic:
+		cipher = new MonoAlphabetic(key);
+		break;
 	default:
 		break;
 	}
@@ -94,8 +96,8 @@ int EncodeFile(CipherType cipherType, string key)
 		if (lineDecodeMsg != lineMsg)
 		{
 			cout << "\ndecode:" << lineDecodeMsg << "\n";
-			cout << "code:" << lineMsg << "\n";
-
+			cout << "msg:" << lineMsg << "\n";
+			cout << "code:" << lineCipher << "\n";
 			throw runtime_error("decode text is NOT equal with encode text\n");
 			return -1;
 		}
@@ -105,10 +107,9 @@ int EncodeFile(CipherType cipherType, string key)
 
 int main(int argc, char **argv)
 {
-	string k = "3";
+	string k = "b";
 	// cin>>k;
 
-	// ContrastTable(3);
-	EncodeFile(typeCaesar, k);
+	EncodeFile(typeMonoalphabetic, k);
 	return 0;
 }

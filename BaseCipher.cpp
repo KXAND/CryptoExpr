@@ -1,3 +1,4 @@
+
 #include "BaseCipher.h"
 BaseCipher::BaseCipher(/* args */)
 {
@@ -30,3 +31,5 @@ void BaseCipher::ShowAlphabet(std::string t)
     }
     printf("\n");
 }
+void BaseCipher::encrypt(std::string &m, int mLen, std::string &c) {}
+void BaseCipher::decrypt(std::string &c, int cLen, std::string &m) {}

@@ -57,7 +57,7 @@ void Caesar::encrypt(std::string &m, int mLen, std::string &c)
     }
 }
 
-void Caesar::decrypt(std::string &c, unsigned int cLen, std::string &m)
+void Caesar::decrypt(std::string &c, int cLen, std::string &m)
 {
     m.clear();
     for (int i = 0; i < cLen; i++)
