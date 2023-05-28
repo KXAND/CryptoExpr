@@ -2,12 +2,14 @@
 #include "BaseCipher.h"
 BaseCipher::BaseCipher(/* args */)
 {
+    printf("使用英文逗号“,”分隔输入的密钥\n");
 }
 
 BaseCipher::~BaseCipher()
 {
 }
 
+// 显示输入的字母表，52个字母，aA
 void BaseCipher::ShowAlphabet(std::string t)
 {
 

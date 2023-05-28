@@ -5,6 +5,7 @@
 #include <fstream>
 #include "caesar.h"
 #include "monoAlphabetic.h"
+#include "affine.h"
 
 using namespace std;
 
@@ -30,7 +31,12 @@ using namespace std;
 enum CipherType
 {
 	typeCaesar,
-	typeMonoalphabetic
+	typeMonoalphabetic,
+	typeAffine,
+	typeDES,
+	typeAES,
+	typeRSA,
+	typeMD5
 };
 // useless for now
 #pragma region
@@ -76,6 +82,12 @@ int EncodeFile(CipherType cipherType, string key)
 	case typeMonoalphabetic:
 		cipher = new MonoAlphabetic(key);
 		break;
+	case typeAffine:
+		cipher = new affine(key);
+	case typeDES:
+	case typeAES:
+	case typeRSA:
+	case typeMD5:
 	default:
 		break;
 	}
@@ -107,9 +119,10 @@ int EncodeFile(CipherType cipherType, string key)
 
 int main(int argc, char **argv)
 {
-	string k = "b";
-	cin >> k;
-	cout << k;
-	// EncodeFile(typeMonoalphabetic, k);
+	string k = "5,7";
+	// cin >> k;
+	// cout << k<<"\n";
+	// BaseCipher *cipher = new affine(k);
+	EncodeFile(typeAffine, k);
 	return 0;
 }
