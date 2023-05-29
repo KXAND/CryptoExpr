@@ -35,3 +35,5 @@ void BaseCipher::ShowAlphabet(std::string t)
 }
 void BaseCipher::encrypt(std::string &m, std::string &c) {}
 void BaseCipher::decrypt(std::string &c, std::string &m) {}
+string BaseCipher::getEncryptedFileAddr() { return this->ENCRYPTED_FILE_ADDR; }
+string BaseCipher::getMessageFileAddr() { return this->MESSAGE_FILE_ADDR; }

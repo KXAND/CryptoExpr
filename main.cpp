@@ -10,15 +10,14 @@
 using namespace std;
 
 #define CHAR_SIZE 26
-#define ENCRYPT_FILE "MessageFiles/CaesarCRPT.txt"
-#define MSG_FILE "MessageFiles/CaesarMSG.txt"
+
 /*
 1.	密码学及应用：熟悉云安全实验平台及环境，完成：
-- Caesar密码：d
-- 单表置换密码：d
-- 仿射密码
+- Caesar密码		d
+- 单表置换密码		d
+- 仿射密码			d
 2.	密码学及应用：
-- DES，
+- DES
 - AES
 3.	密码学及应用：
 - RSA，
@@ -67,8 +66,8 @@ bool CheckParse(int argc, char **argv)
 // calculate and fill encrypt file
 int EncodeFile(CipherType cipherType, string key)
 {
-	ifstream inFile(MSG_FILE);
-	ofstream outFile(ENCRYPT_FILE);
+	ifstream inFile;
+	ofstream outFile;
 
 	string lineMsg;
 	string lineCipher;
@@ -91,6 +90,10 @@ int EncodeFile(CipherType cipherType, string key)
 	default:
 		break;
 	}
+
+	inFile.open(cipher->getMessageFileAddr());
+	outFile.open(cipher->getEncryptedFileAddr());
+
 	while (getline(inFile, lineMsg))
 	{
 

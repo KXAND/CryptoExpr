@@ -2,6 +2,8 @@
 
 affine::affine(std::string key)
 {
+    MESSAGE_FILE_ADDR = "MessageFiles/CaesarMSG.txt";
+    ENCRYPTED_FILE_ADDR = "MessageFiles/AffineCRPT.txt";
     int pos = key.find(',');
     mA = std::stoi(key.substr(0, pos));
     mB = std::stoi(key.substr(pos + 1));
