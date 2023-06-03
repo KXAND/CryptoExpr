@@ -15,22 +15,7 @@ using namespace std;
 
 #define CHAR_SIZE 26
 
-/*
-1.	密码学及应用：熟悉云安全实验平台及环境，完成：
-- Caesar密码		d
-- 单表置换密码		d
-- 仿射密码			d
-2.	密码学及应用：
-- DES
-- AES
-3.	密码学及应用：
-- RSA，
-- MD5
-4.	密码学及应用：
-- 文件安全传输
-5.	WEB安全
-6.	漏洞挖掘（二进制漏洞挖掘）
-*/
+
 enum CipherType
 {
 	typeCaesar,
@@ -92,7 +77,7 @@ int EncodeFile(CipherType cipherType, string key)
 		cipher = new DES(key);
 		break;
 	case typeAES:
-		cipher = new AES(string("\x2b\x7e\x15\x16\x28\xae\xd2\xa6\xab\xf7\x15\x88\x09\xcf\x4f\x3c"));
+		cipher = new AES(key);
 		break;
 	case typeRSA:
 		cipher = new RSA(key);
@@ -115,11 +100,6 @@ int EncodeFile(CipherType cipherType, string key)
 		{
 			lineMsg = lineMsg.substr(3);
 		}
-		// for (int i = 0; i < lineMsg.length() + 2; i++)
-		// 		{
-
-		// 			printf("\n%d(%c)", lineMsg[i], lineMsg[i]);
-		// 		}
 		cipher->encrypt(lineMsg, lineCipher);
 		outFile << lineCipher;
 		outFile << "\n";
@@ -152,7 +132,6 @@ int main(int argc, char **argv)
 	string k = "133457799BBCDFF1";
 	string cipherChosen;
 	CipherType cipherType;
-	string xx = "0011001101100001011001100110101001101000011100110110010001110110";
 	cin >> cipherChosen;
 	if (cipherChosen == "caesar")
 	{
@@ -161,25 +140,29 @@ int main(int argc, char **argv)
 	}
 	else if (cipherChosen == "mono")
 	{
+		k = "THIS IS A default key";
 		cipherType = typeMonoalphabetic;
 	}
 	else if (cipherChosen == "affine")
 	{
+		k = "5,7";
 		cipherType = typeAffine;
 	}
 	else if (cipherChosen == "des")
 	{
+		k = "133457799BBCDFF1";
 		cipherType = typeDES;
 	}
 	else if (cipherChosen == "aes")
 	{
+		k = "\x2b\x7e\x15\x16\x28\xae\xd2\xa6\xab\xf7\x15\x88\x09\xcf\x4f\x3c";
 		cipherType = typeAES;
 	}
 	else if (cipherChosen == "rsa")
 	{
+		k = "5,7";
 		cipherType = typeRSA;
 		// cin >> k;
-		k = "5,7";
 	}
 	else if (cipherChosen == "md5")
 	{
@@ -192,8 +175,6 @@ int main(int argc, char **argv)
 	else
 		throw runtime_error("illegal cipher type\n");
 
-	// cout << k<<"\n";
-	// BaseCipher *cipher = new affine(k);
 	EncodeFile(cipherType, k);
 	return 0;
 }

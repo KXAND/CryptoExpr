@@ -300,7 +300,7 @@ void md5_digest(unsigned char *strContent, unsigned int iLength, unsigned char o
 #pragma endregion
 MD5::MD5(string key)
 {
-    MESSAGE_FILE_ADDR = "MessageFiles/CaesarMSG.txt";
+    MESSAGE_FILE_ADDR = "MessageFiles/MSG.txt";
     ENCRYPTED_FILE_ADDR = "MessageFiles/MD5CRPT.txt";
     sKey = key;
 }
@@ -312,7 +312,7 @@ void MD5::encrypt(std::string &m, std::string &c)
     md5_digest(reinterpret_cast<unsigned char *>(const_cast<char *>(m.c_str())), m.length(), outChar);
     for (int i = 0; i < 16; i++)
     {
-        c += std::to_string(outChar[i])+" ";
+        c += std::to_string(outChar[i]) + " ";
         // c.push_back(outChar[i]);
     }
 

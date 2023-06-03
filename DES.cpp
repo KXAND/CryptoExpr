@@ -13,7 +13,7 @@ DES::DES(string key)
     // 4.R视为新的L，R*视为新的R
     // 5.16轮循环后，再交换LR的位置
     // 6.FP置换
-    MESSAGE_FILE_ADDR = "MessageFiles/CaesarMSG.txt";
+    MESSAGE_FILE_ADDR = "MessageFiles/MSG.txt";
     ENCRYPTED_FILE_ADDR = "MessageFiles/DES-CRPT.txt";
     sKey = key;
     childKeyGenerate();

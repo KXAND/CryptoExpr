@@ -178,7 +178,7 @@ void rsa_decrypt(int n, int d, int *&cw, int cLength, char *mw)
 
 RSA::RSA(string key)
 {
-    MESSAGE_FILE_ADDR = "MessageFiles/CaesarMSG.txt";
+    MESSAGE_FILE_ADDR = "MessageFiles/MSG.txt";
     ENCRYPTED_FILE_ADDR = "MessageFiles/RSACRPT.txt";
     sKey = key;
 }

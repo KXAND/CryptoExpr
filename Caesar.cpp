@@ -1,7 +1,7 @@
 #include "Caesar.h"
 Caesar::Caesar(std::string key)
 {
-    MESSAGE_FILE_ADDR = "MessageFiles/CaesarMSG.txt";
+    MESSAGE_FILE_ADDR = "MessageFiles/MSG.txt";
     ENCRYPTED_FILE_ADDR = "MessageFiles/CaesarCRPT.txt";
     mKey = std::stoi(key);
 

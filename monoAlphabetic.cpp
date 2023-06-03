@@ -1,7 +1,7 @@
 #include "MonoAlphabetic.h"
 MonoAlphabetic::MonoAlphabetic(std::string key)
 {
-    MESSAGE_FILE_ADDR = "MessageFiles/CaesarMSG.txt";
+    MESSAGE_FILE_ADDR = "MessageFiles/MSG.txt";
     ENCRYPTED_FILE_ADDR = "MessageFiles/MonoAlphabeticCRPT.txt";
 
     for (int i = 0; i < key.length(); i++)
