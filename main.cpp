@@ -122,7 +122,7 @@ int EncodeFile(CipherType cipherType, string key)
 		// 		}
 		cipher->encrypt(lineMsg, lineCipher);
 		outFile << lineCipher;
-		// outFile << "\n";
+		outFile << "\n";
 		cipher->decrypt(lineCipher, lineDecodeMsg);
 
 		// if (lineDecodeMsg != lineMsg)
@@ -178,6 +178,8 @@ int main(int argc, char **argv)
 	else if (cipherChosen == "rsa")
 	{
 		cipherType = typeRSA;
+		// cin >> k;
+		k = "5,7";
 	}
 	else if (cipherChosen == "md5")
 	{
@@ -190,7 +192,6 @@ int main(int argc, char **argv)
 	else
 		throw runtime_error("illegal cipher type\n");
 
-	// cin >> k;
 	// cout << k<<"\n";
 	// BaseCipher *cipher = new affine(k);
 	EncodeFile(cipherType, k);

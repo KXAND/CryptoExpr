@@ -72,7 +72,8 @@ unsigned int MakePrivatedKeyd(unsigned int uiP, unsigned int uiQ)
 unsigned int MakePairkey(unsigned int uiP, unsigned int uiQ, unsigned int uiD)
 {
     bool bFlag = true;
-    unsigned int i = 0, e;
+    unsigned int i = 0;
+    unsigned int e;
     unsigned int z = (uiP - 1) * (uiQ - 1);
     unsigned int d = pset.set[uiD];
 
@@ -101,7 +102,7 @@ unsigned int MakePairkey(unsigned int uiP, unsigned int uiQ, unsigned int uiD)
 }
 
 //	功能：对外提供接口，获得公、私钥对
-//  参数：uiP: 素数P; uiQ: 素数Q; uiD: 私钥d
+//  参数：uiP: 素数P; uiQ: 素数Q; uiD: 私钥d.return pairkey.n
 unsigned int GetPairKey(unsigned int &d, unsigned int &e)
 {
     d = pairkey.d;
@@ -185,7 +186,24 @@ RSA::RSA(string key)
 void RSA::encrypt(std::string &m, std::string &c)
 {
     c.clear();
-    rsa_encrypt()
+    int pos = sKey.find(',');
+    p = std::stoi(sKey.substr(0, pos));
+    q = std::stoi(sKey.substr(pos + 1));
+    n = p * q;
+    // p,q,m,e(pbkey),d(pvkey)
+    int dsize = MakePrivatedKeyd(p, q);
+    // d = GetPrivateKeyd(dsize - 1);
+    MakePairkey(p, q, dsize - 1);
+    // GetPairKey(n,e);
+    e = pairkey.e;
+    int iC[1 << 15];
+    int *cPtr = iC;
+    rsa_encrypt(n, e, &m[0], m.length(), cPtr);
+    for (int i = 0; i < m.length(); i++)
+    {
+        c += std::to_string(iC[i]);
+    }
+
     return;
 }
 

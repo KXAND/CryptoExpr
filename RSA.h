@@ -20,6 +20,11 @@ class RSA : public BaseCipher
 private:
     const int CHAR_SIZE = 26;
     string sKey;
+    int n;
+    int e;
+    int p;
+    int q;
+    int d;
 
 public:
     RSA(std::string key);
