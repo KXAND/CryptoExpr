@@ -14,7 +14,7 @@ DES::DES(string key)
     // 5.16轮循环后，再交换LR的位置
     // 6.FP置换
     MESSAGE_FILE_ADDR = "MessageFiles/MSG.txt";
-    ENCRYPTED_FILE_ADDR = "MessageFiles/DES-CRPT.txt";
+    ENCRYPTED_FILE_ADDR = "MessageFiles/DESCRPT.txt";
     sKey = key;
     childKeyGenerate();
     // printf("%d")
