@@ -33,7 +33,7 @@ MonoAlphabetic::MonoAlphabetic(std::string key)
 MonoAlphabetic::~MonoAlphabetic()
 {
 }
-void MonoAlphabetic::encrypt(std::string &m, int mLen, std::string &c)
+void MonoAlphabetic::encrypt(std::string &m, std::string &c)
 {
     c.clear();
     for (int i = 0; i < m.length(); i++)
@@ -51,7 +51,7 @@ void MonoAlphabetic::encrypt(std::string &m, int mLen, std::string &c)
     }
 }
 
-void MonoAlphabetic::decrypt(std::string &c, int cLen, std::string &m)
+void MonoAlphabetic::decrypt(std::string &c, std::string &m)
 {
     m.clear();
     for (int i = 0; i < c.length(); i++)

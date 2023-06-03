@@ -14,9 +14,7 @@ public:
     void ShowAlphabet(std::string t);
     string getEncryptedFileAddr();
     string getMessageFileAddr();
-    virtual void encrypt(std::string &m, std::string &c);
-    virtual void decrypt(std::string &c, std::string &m);
-    // virtual void encrypt();
-    // virtual void decrypt();
+    virtual void encrypt(std::string &m, std::string &c) = 0;
+    virtual void decrypt(std::string &c, std::string &m) = 0;
 };
 #endif

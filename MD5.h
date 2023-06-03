@@ -1,13 +1,13 @@
 #include "baseCipher.h"
-
-class MonoAlphabetic : public BaseCipher
+class MD5 : public BaseCipher
 {
 private:
-    std::string mkey;
+    const int CHAR_SIZE = 26;
+    string sKey;
 
 public:
-    MonoAlphabetic(std::string key);
-    ~MonoAlphabetic();
+    MD5(std::string key);
+    ~MD5();
     void encrypt(std::string &m, std::string &c);
     void decrypt(std::string &c, std::string &m);
 };

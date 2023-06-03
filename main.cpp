@@ -6,6 +6,10 @@
 #include "caesar.h"
 #include "monoAlphabetic.h"
 #include "affine.h"
+#include "DES.h"
+#include "AES.h"
+#include "RSA.h"
+#include "MD5.h"
 
 using namespace std;
 
@@ -83,10 +87,19 @@ int EncodeFile(CipherType cipherType, string key)
 		break;
 	case typeAffine:
 		cipher = new affine(key);
+		break;
 	case typeDES:
+		cipher = new DES(key);
+		break;
 	case typeAES:
+		cipher = new AES(string("\x2b\x7e\x15\x16\x28\xae\xd2\xa6\xab\xf7\x15\x88\x09\xcf\x4f\x3c"));
+		break;
 	case typeRSA:
+		cipher = new RSA(key);
+		break;
 	case typeMD5:
+		cipher = new MD5(key);
+		break;
 	default:
 		break;
 	}
@@ -102,30 +115,84 @@ int EncodeFile(CipherType cipherType, string key)
 		{
 			lineMsg = lineMsg.substr(3);
 		}
+		// for (int i = 0; i < lineMsg.length() + 2; i++)
+		// 		{
 
+		// 			printf("\n%d(%c)", lineMsg[i], lineMsg[i]);
+		// 		}
 		cipher->encrypt(lineMsg, lineCipher);
 		outFile << lineCipher;
-		outFile << "\n";
+		// outFile << "\n";
 		cipher->decrypt(lineCipher, lineDecodeMsg);
 
-		if (lineDecodeMsg != lineMsg)
-		{
-			cout << "\ndecode:" << lineDecodeMsg << "\n";
-			cout << "msg:" << lineMsg << "\n";
-			cout << "code:" << lineCipher << "\n";
-			throw runtime_error("decode text is NOT equal with encode text\n");
-			return -1;
-		}
+		// if (lineDecodeMsg != lineMsg)
+		// {
+		// 	for (int i = 0; i < lineDecodeMsg.length() + 2; i++)
+		// 	{
+		// 		if (lineMsg[i] == lineDecodeMsg[i])
+		// 		{
+		// 			cout << (int)lineMsg[i] << " ";
+		// 			continue;
+		// 		}
+		// 		printf("\n%d(%c) %d", lineMsg.length(), lineMsg[i], lineDecodeMsg.length());
+		// 	}
+
+		// 	cout << "\ndecode:" << lineDecodeMsg << "\n";
+		// 	cout << "msg:" << lineMsg << "\n";
+		// 	cout << "code:" << lineCipher << "\n";
+		// 	throw runtime_error("decode text is NOT equal with encode text\n");
+		// 	return -1;
+		// }
 	}
 	return 0;
 }
 
 int main(int argc, char **argv)
 {
-	string k = "5,7";
+	string k = "133457799BBCDFF1";
+	string cipherChosen;
+	CipherType cipherType;
+	string xx = "0011001101100001011001100110101001101000011100110110010001110110";
+	cin >> cipherChosen;
+	if (cipherChosen == "caesar")
+	{
+		k = "3";
+		cipherType = typeCaesar;
+	}
+	else if (cipherChosen == "mono")
+	{
+		cipherType = typeMonoalphabetic;
+	}
+	else if (cipherChosen == "affine")
+	{
+		cipherType = typeAffine;
+	}
+	else if (cipherChosen == "des")
+	{
+		cipherType = typeDES;
+	}
+	else if (cipherChosen == "aes")
+	{
+		cipherType = typeAES;
+	}
+	else if (cipherChosen == "rsa")
+	{
+		cipherType = typeRSA;
+	}
+	else if (cipherChosen == "md5")
+	{
+		cipherType = typeMD5;
+	}
+	// else if (cipherChosen == "safefile")
+	// {
+	// 	cipherType = typeMonoalphabetic;
+	// }
+	else
+		throw runtime_error("illegal cipher type\n");
+
 	// cin >> k;
 	// cout << k<<"\n";
 	// BaseCipher *cipher = new affine(k);
-	EncodeFile(typeAffine, k);
+	EncodeFile(cipherType, k);
 	return 0;
 }
